@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 
 
 const App =() => {
   const [result,setResult] = useState("")
+  const inputRef = useRef(null)
+
+  useEffect(()=>inputRef.current.focus())
 
   const handleClick = (e) => {
     setResult(result.concat(e.target.name));
@@ -14,12 +17,23 @@ const App =() => {
   const backspace= () =>{
     setResult(result.slice(1));
   }
+  
+  function calculate() {
+    try{
+      //eslint-disable-next-line
+      setResult(eval(result).toString());
+
+    }catch(error){
+      setResult("Error");
+    }
+    
+  }
   return (
     <>
       <div className="container">
 
           <form>
-            <input type="text" value={result} />
+            <input type="text" value={result} ref={inputRef} />
           </form>
 
           <div className="keypad">
@@ -40,7 +54,7 @@ const App =() => {
             <button name="+" onClick={handleClick}>+</button >
             <button name="0" onClick={handleClick}>0</button >
             <button name="." onClick={handleClick}>.</button >
-            <button onClick={handleClick} id="result">=</button >
+            <button name="result" onClick={calculate} id="result">=</button >
             
         
           </div>

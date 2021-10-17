@@ -7,8 +7,8 @@ button{
   border-radius: 5px;
   border: none;
   cursor:pointer;
-  background: rgb(45, 45, 107);
-  color:white;
+  background: rgb(248, 248, 248);
+  color:rgb(0, 0, 0);
   font-weight: 500;
 }
 #clear{
@@ -20,11 +20,12 @@ button{
 #result{
   grid-column: 3/5;
   grid-row: 5;
+  background: green;
 
 }
 #backspace{
-  background-color: rgb(86, 228, 233);
-  color: black;
+  background-color: rgb(17, 32, 116);
+  color: rgb(255, 255, 255);
 }
 .container{
   top: 50%;
